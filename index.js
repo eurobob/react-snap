@@ -678,7 +678,7 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
   }
 
   fs.createReadStream(path.join(sourceDir, "index.html")).pipe(
-    fs.createWriteStream(path.join(sourceDir, "200.html"))
+    fs.createWriteStream(path.join(destinationDir, "200.html"))
   );
 
   if (destinationDir !== sourceDir && options.saveAs === "html") {
