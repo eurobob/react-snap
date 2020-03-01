@@ -657,6 +657,7 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
   const destinationDir = path.normalize(
     `${options.destination}`
   );
+  console.warn(1);
   const startServer = options => {
     const app = express()
       .use(options.publicPath, serveStatic(sourceDir))
@@ -665,28 +666,33 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
     server.listen(options.port);
     return server;
   };
-
+  console.warn(2);
   if (
     destinationDir === sourceDir &&
     options.saveAs === "html" &&
     fs.existsSync(path.join(sourceDir, "200.html"))
   ) {
+    console.warn(3);
     console.log(
       `🔥  200.html is present in the sourceDir (${sourceDir}). You can not run react-snap twice - this will break the build`
     );
     return Promise.reject("");
   }
+  console.warn(4);
 
   fs.createReadStream(path.join(sourceDir, "index.html")).pipe(
     fs.createWriteStream(path.join(destinationDir, "200.html"))
   );
+  console.warn(5);
 
   if (destinationDir !== sourceDir && options.saveAs === "html") {
+    console.warn(6);
     mkdirp.sync(destinationDir);
     fs.createReadStream(path.join(sourceDir, "index.html")).pipe(
       fs.createWriteStream(path.join(destinationDir, "200.html"))
     );
   }
+  console.warn(7);
 
   const server = options.externalServer ? null : startServer(options);
 
