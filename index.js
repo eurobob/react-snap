@@ -653,7 +653,7 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
     return Promise.reject(e.message);
   }
 
-  const sourceDir = path.normalize(`${process.cwd()}/${options.source}`);
+  const sourceDir = path.normalize(`${options.source}`);
   const destinationDir = path.normalize(
     `${options.destination}`
   );
