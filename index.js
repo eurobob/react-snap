@@ -655,7 +655,7 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
 
   const sourceDir = path.normalize(`${process.cwd()}/${options.source}`);
   const destinationDir = path.normalize(
-    `${process.cwd()}/${options.destination}`
+    `${options.destination}`
   );
   const startServer = options => {
     const app = express()
